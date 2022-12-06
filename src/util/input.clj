@@ -3,6 +3,9 @@
     [clojure.string :refer [split split-lines]]
     [util.conversion :refer :all]))
 
+(defn input-all [file]
+  (slurp (clojure.java.io/resource file)))
+
 (defn input-parsed [file f]
   (f (slurp (clojure.java.io/resource file))))
 
