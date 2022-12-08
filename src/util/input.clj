@@ -14,3 +14,6 @@
 
 (defn input-split-by [file re]
   (input-parsed file #(split % re)))
+
+(defn input-int-grid [file]
+  (mapv #(mapv parse-int (re-seq #"\d" %)) (input-lines file)))
