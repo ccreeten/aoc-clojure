@@ -2,7 +2,8 @@
   (:require
     [clojure.string :refer [split]]
     [util.conversion :refer :all]
-    [util.input :refer :all]))
+    [util.input :refer :all]
+    [util.solution :refer :all]))
 
 (defrecord assignment [from to])
 
@@ -29,11 +30,7 @@
        (filter #(or (partially-contains (first %) (second %)) (partially-contains (second %) (first %))))
        (count)))
 
-(def input (input-lines "2022/day4.txt"))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-lines "2022/day4.txt")))
 
 ; part 1: 651
 ; part 2: 956

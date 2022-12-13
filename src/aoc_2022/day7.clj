@@ -4,7 +4,8 @@
     [util.collection :refer :all]
     [util.conversion :refer :all]
     [util.input :refer :all]
-    [util.math :refer :all]))
+    [util.math :refer :all]
+    [util.solution :refer :all]))
 
 (defn command-output? [line]
   (not (starts-with? line "$")))
@@ -21,10 +22,10 @@
   (loop [[line & rest] output path [0] tree []]
     (cond
       (nil? line) tree
-      (re-matches #"\$ cd .." line) (recur rest (update-last (init path) inc) tree)
+      (re-matches #"\$ cd .." line) (recur rest (update-last (firstv path) inc) tree)
       (re-matches #"\$ cd .*" line) (recur rest path tree)
       (re-matches #"\$ ls"    line) (let [files (parse-ls rest)]
-                                      (recur (drop-while command-output? rest) (conj path (count files)) (assoc-in tree path files))))))
+                                    (recur (drop-while command-output? rest) (conj path (count files)) (assoc-in tree path files))))))
 
 (defn size [node]
   (if (vector? node)
@@ -43,11 +44,7 @@
   (let [unused (- 70000000 (size input)) excess (- 30000000 unused)]
     (apply min (find-directory-sizes input #(>= (size %) excess)))))
 
-(def input (input-parsed "2022/day7.txt" (comp parse-output split-lines)))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-parsed "2022/day7.txt" (comp parse-output split-lines))))
 
 ; part 1: 2061777
 ; part 2: 4473403

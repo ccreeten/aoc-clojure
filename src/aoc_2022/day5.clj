@@ -3,7 +3,8 @@
     [clojure.string :refer [split]]
     [util.conversion :refer :all]
     [util.input :refer :all]
-    [util.string :refer :all]))
+    [util.string :refer :all]
+    [util.solution :refer :all]))
 
 (defrecord move [count from to])
 
@@ -11,7 +12,7 @@
   (->> (split stacks #"\n")
        (mapv #(re-seq #"[A-Z]|    " %))
        (apply mapv list)
-       (mapv #(filter not-blank %))))
+       (mapv #(filter not-blank? %))))
 
 (defn parse-move [move]
   (let [[count from to] (map parse-int (re-seq #"\d+" move))]
@@ -39,11 +40,7 @@
        (map first)
        (apply str)))
 
-(def input (input-parsed "2022/day5.txt" parse-begin-state))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-parsed "2022/day5.txt" parse-begin-state)))
 
 ; part 1: MQTPGLLDN
 ; part 2: LVZPSTTCZ

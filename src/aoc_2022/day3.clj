@@ -1,7 +1,8 @@
 (ns aoc-2022.day3
   (:require
     [util.collection :refer :all]
-    [util.input :refer :all]))
+    [util.input :refer :all]
+    [util.solution :refer :all]))
 
 (defn to-item-priority [item]
   (let [ascii (int item)]
@@ -27,11 +28,7 @@
        (map to-group-priority)
        (reduce +)))
 
-(def input (input-lines "2022/day3.txt"))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-lines "2022/day3.txt")))
 
 ; part 1: 7875
 ; part 2: 2479

@@ -1,13 +1,13 @@
 (ns aoc-2022.dayx
   (:require
-    [util.input :refer :all]))
+    [util.input :refer :all]
+    [util.solution :refer :all]))
 
 (defn part-1 [input])
 
 (defn part-2 [input])
 
-(def input (input-lines "2022/dayx.txt"))
+(defn -main [] (aoc-solve part-1 part-2 (input-lines "2022/dayx.txt")))
 
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+; part 1 :
+; part 2 :

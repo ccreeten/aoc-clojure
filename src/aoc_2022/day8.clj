@@ -2,7 +2,8 @@
   (:require
     [util.conversion :refer :all]
     [util.input :refer :all]
-    [util.math :refer :all]))
+    [util.math :refer :all]
+    [util.solution :refer :all]))
 
 (defrecord forest [grid transpose])
 
@@ -33,11 +34,7 @@
 (defn part-2 [input]
   (apply max (eval-locations input scenic-score)))
 
-(def input (let [grid (input-int-grid "2022/day8.txt")] (->forest grid (apply mapv vector grid))))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (let [grid (input-int-grid "2022/day8.txt")] (->forest grid (apply mapv vector grid)))))
 
 ; part 1: 1546
 ; part 2: 519064

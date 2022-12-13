@@ -2,5 +2,5 @@
   (:require
     [clojure.string :refer [blank?]]))
 
-(defn not-blank [s]
+(defn not-blank? [s]
   (not (blank? s)))

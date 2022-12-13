@@ -3,7 +3,8 @@
     [clojure.string :refer [split]]
     [util.conversion :refer :all]
     [util.input :refer :all]
-    [util.math :refer :all]))
+    [util.math :refer :all]
+    [util.solution :refer :all]))
 
 (defn part-1 [input]
   (->> (map #(map parse-int (split % #"\n")) input)
@@ -17,11 +18,7 @@
        (take 3)
        (reduce +)))
 
-(def input (input-split-by "2022/day1.txt" #"\n\n"))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-split-by "2022/day1.txt" #"\n\n")))
 
 ; part 1: 68442
 ; part 2: 204837

@@ -17,3 +17,6 @@
 
 (defn input-int-grid [file]
   (mapv #(mapv parse-int (re-seq #"\d" %)) (input-lines file)))
+
+(defn input-grid [file]
+  (mapv (comp vec seq) (input-lines file)))

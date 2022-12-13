@@ -1,7 +1,8 @@
 (ns aoc-2022.day2
   (:require
     [clojure.string :refer [split]]
-    [util.input :refer :all]))
+    [util.input :refer :all]
+    [util.solution :refer :all]))
 
 (def decrypt-map
   {"A" :rock, "B" :paper, "C" :scissors
@@ -38,11 +39,7 @@
 (defn part-2 [input]
   (reduce + (map score-2 input)))
 
-(def input (input-lines "2022/day2.txt"))
-
-(defn -main []
-  (println "; part 1:" (part-1 input))
-  (println "; part 2:" (part-2 input)))
+(defn -main [] (aoc-solve part-1 part-2 (input-lines "2022/day2.txt")))
 
 ; part 1: 14375
 ; part 2: 10274
