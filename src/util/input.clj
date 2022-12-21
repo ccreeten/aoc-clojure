@@ -12,6 +12,9 @@
 (defn input-lines [file]
   (input-parsed file split-lines))
 
+(defn input-ints [file]
+  (map parse-int (input-lines file)))
+
 (defn input-split-by [file re]
   (input-parsed file #(split % re)))
 
